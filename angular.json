@@ -126,6 +126,46 @@
           }
         }
       }
+    },
+    "one": {
+      "projectType": "library",
+      "root": "projects/one",
+      "sourceRoot": "projects/one/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/one/tsconfig.lib.json",
+            "project": "projects/one/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/one/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/one/src/test.ts",
+            "tsConfig": "projects/one/tsconfig.spec.json",
+            "karmaConfig": "projects/one/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/one/tsconfig.lib.json",
+              "projects/one/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "aot-barrel-issue"
 }
